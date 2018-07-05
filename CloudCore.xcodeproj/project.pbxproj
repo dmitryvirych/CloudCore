@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15754F9E20EE1D5A0063CDF4 /* ValuesTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15754F9D20EE1D5A0063CDF4 /* ValuesTransformer.swift */; };
+		15754F9F20EE1E700063CDF4 /* ValuesTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15754F9D20EE1D5A0063CDF4 /* ValuesTransformer.swift */; };
 		D9089D4A1FE14E57000FC60C /* SetupOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9089D491FE14E57000FC60C /* SetupOperation.swift */; };
 		D97465F81FE319930060EA66 /* CloudCoreDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97465F71FE319930060EA66 /* CloudCoreDelegate.swift */; };
 		D97465FA1FE31A650060EA66 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97465F91FE31A650060EA66 /* Module.swift */; };
@@ -89,6 +91,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15754F9D20EE1D5A0063CDF4 /* ValuesTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuesTransformer.swift; sourceTree = "<group>"; };
 		D5B2E89F1C3A780C00C0327D /* CloudCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CloudCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5C6298B1C3A8BBD007F7B7C /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9089D491FE14E57000FC60C /* SetupOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupOperation.swift; sourceTree = "<group>"; };
@@ -196,6 +199,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15754F9C20EE1D410063CDF4 /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				15754F9D20EE1D5A0063CDF4 /* ValuesTransformer.swift */,
+			);
+			path = Transformers;
+			sourceTree = "<group>";
+		};
 		D5B2E8951C3A780C00C0327D = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +322,7 @@
 		E2075FF11E4BB6EF00E31F1F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				15754F9C20EE1D410063CDF4 /* Transformers */,
 				D9089D481FE14E4A000FC60C /* Setup Operation */,
 				E2075FF81E4BBEAC00E31F1F /* AsynchronousOperation.swift */,
 				E2075FF31E4BB70D00E31F1F /* Fetch */,
@@ -694,6 +706,7 @@
 				E2E4D8411E76D5A600550CBE /* FetchAndSaveOperation.swift in Sources */,
 				E2C02A141E4CC2A5001B2871 /* FetchRecordZoneChangesOperation.swift in Sources */,
 				E2C02A191E4CDEF1001B2871 /* DeleteFromCoreDataOperation.swift in Sources */,
+				15754F9E20EE1D5A0063CDF4 /* ValuesTransformer.swift in Sources */,
 				E29BB21A1E4334590020F5B6 /* CloudCoreConfig.swift in Sources */,
 				E2EE20071E4E6DCE0060F769 /* ServiceAttributeName.swift in Sources */,
 				E29BB21E1E433E050020F5B6 /* CKRecordID.swift in Sources */,
@@ -730,6 +743,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9B3C6F81FCEF38D00CDB7FF /* ViewController.swift in Sources */,
+				15754F9F20EE1E700063CDF4 /* ValuesTransformer.swift in Sources */,
 				D9B3C6F61FCEF38D00CDB7FF /* AppDelegate.swift in Sources */,
 				D9B3C6FE1FCEF38D00CDB7FF /* TestableApp.xcdatamodeld in Sources */,
 			);
