@@ -75,11 +75,22 @@ class RecordToCoreDataOperation: AsynchronousOperation {
 	private func fill(object: NSManagedObject, entityName: String, serviceAttributeNames: ServiceAttributeNames, context: NSManagedObjectContext) throws {
 		for key in record.allKeys() {
 			let recordValue = record.value(forKey: key)
-			
-			let attribute = CloudKitAttribute(value: recordValue, fieldName: key, entityName: entityName, serviceAttributes: serviceAttributeNames, context: context)
-			let coreDataValue = try attribute.makeCoreDataValue()
-			object.setValue(coreDataValue, forKey: key)
-		}
+            
+            let attribute = CloudKitAttribute(value: recordValue, fieldName: key, entityName: entityName, serviceAttributes: serviceAttributeNames, context: context)
+            let coreDataValue = try attribute.makeCoreDataValue()
+            if let attribute = object.entity.attributesByName[key], attribute.attributeType == .transformableAttributeType {
+                if let name = attribute.valueTransformerName, let transformer = ValueTransformer(forName: NSValueTransformerName(rawValue: name)) {
+                    let value = transformer.transformedValue(coreDataValue)
+                    object.setValue(value, forKey: key)
+                } else if let data = coreDataValue as? Data, let unarchivedObject = NSKeyedUnarchiver.unarchiveObject(with: data) {
+                    object.setValue(unarchivedObject, forKey: key)
+                } else {
+                    object.setValue(coreDataValue, forKey: key)
+                }
+            } else {
+                object.setValue(coreDataValue, forKey: key)
+            }
+        }
 		
 		// Set system headers
 		object.setValue(record.recordID.encodedString, forKey: serviceAttributeNames.recordID)
