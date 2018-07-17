@@ -14,7 +14,7 @@ class ObjectToRecordOperation: Operation {
     var parentContext: NSManagedObjectContext?
     
     // Set on init
-    let record: CKRecord
+    var record: CKRecord
     private let changedAttributes: [String]?
     private let serviceAttributeNames: ServiceAttributeNames
     //
@@ -56,8 +56,12 @@ class ObjectToRecordOperation: Operation {
             throw CloudCoreError.coreData("Unable to find managed object for record: \(record)")
         }
         
-        let changedValues = managedObject.dictionaryWithValues(forKeys: Array(managedObject.entity.attributesByName.keys))
+        let changedValues = managedObject.changedValues()
         print("------- record.recordType: ", record.recordType)
+        
+        if let rec = (managedObject as? Syncable)?.record(record) {
+            return
+        }
         
         for (attributeName, value) in changedValues {
             if attributeName == serviceAttributeNames.recordData || attributeName == serviceAttributeNames.recordID { continue }
