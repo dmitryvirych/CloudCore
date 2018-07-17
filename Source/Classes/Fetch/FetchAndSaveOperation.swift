@@ -78,9 +78,6 @@ public class FetchAndSaveOperation: Operation {
 			// Convert and write CKRecord To NSManagedObject Operation
 			let convertOperation = RecordToCoreDataOperation(parentContext: context, record: $0)
 			convertOperation.errorBlock = { self.errorBlock?($0) }
-            convertOperation.completionBlock = {
-                objectsWithMissingReferences.append(convertOperation.missingObjectsPerEntities)
-            }
 			self.queue.addOperation(convertOperation)
 		}
 		
